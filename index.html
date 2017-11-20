@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mario RPG</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<!-- PseudoCode:
+	
+	-Create layout of page.
+	-User selects 1 of 4 characters
+	-unselected characters become enemies
+	-choose 1, and start attacking.
+	-as hero attacks, hero's attack power goes up.
+	-Keep attacking until one person's hp is gone.
+	-If hero dies, ask to start the game over.
+	-if enemy dies, have user choose another character to attack.
+	-repeat until either hero is defeated or all enemies are defeated. -->
+
+	<h1><strong>Mario RPG!</strong></h1>
+
+	<div class="characters">
+		<div id="mario">
+			<h3>Mario</h3>
+			<img class="char" src="assets/images/mario.png">
+			<div id="marioHP">
+				<h4>100</h4>
+			</div>
+		</div>
+		<div id="luigi">
+			<h3>Luigi</h3>
+			<img class="char" src="assets/images/luigi.png">
+			<div id="luigiHP">
+				<h4>100</h4>
+			</div>
+		</div>
+		<div id="toad">
+			<h3>Toad</h3>
+			<img class="char" src="assets/images/toad.png">
+			<div id="toadHP">
+				<h4>100</h4>
+			</div>
+		</div>
+		<div id="bowser">
+			<h3>Bowser</h3>
+			<img class="char" src="assets/images/bowser.png">
+			<div id="bowserHP">
+				<h4>100</h4>
+			</div>
+		</div>
+	</div>
+	<div class="your">
+		<h2>Your Character</h2>
+		<div id="heroSelect">
+		</div>
+	</div>
+	<div class="enemies">
+		<h2>Enemies Available To Attack</h2>
+		<div id="enemiesSelect">
+		</div>
+	</div>
+	<div class="fight">
+		<h2>Fight Section</h2>
+	</div>
+	<button id="attack">Attack</button>
+	<div class="defender">
+		<h2>Defender</h2>
+		<div id="defenderSelect">
+		</div>
+	</div>
+	<div id="fightText">
+	</div>
+	<div id="counterText">
+	</div>
+
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
+
+</body>
+</html>
