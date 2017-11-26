@@ -188,7 +188,7 @@ $(document).ready(function() {
 		} else if (heroChosen == "Bowser") {
 			attack += 8;
 		}
-		if (defeatCount == 3) {
+		if (defeatCount > 2) {
 			$("#counterText").text("You win!");
 		}
 	})
