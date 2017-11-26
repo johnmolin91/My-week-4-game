@@ -12,14 +12,14 @@ $(document).ready(function() {
 	var bowserDiv = $("#bowser");
 	var charChosen = false;
 	var defenderChosen = false;
-	var hpMario = 100;
-	var hpLuigi = 100;
-	var hpToad = 100;
-	var hpBowser = 100;
+	var hpMario = 200;
+	var hpLuigi = 190;
+	var hpToad = 130;
+	var hpBowser = 220;
 	var attackMario = 10;
-	var attackLuigi = 10;
-	var attackToad = 10;
-	var attackBowser = 10;
+	var attackLuigi = 12;
+	var attackToad = 13;
+	var attackBowser = 8;
 	var counterMario = 20;
 	var counterLuigi = 20;
 	var counterToad = 20;
@@ -28,6 +28,8 @@ $(document).ready(function() {
 	var counterAttack = 0;
 	var heroHP = 0;
 	var defenderHP = 0;
+	var defenderDefeat = false;
+	var defeatCount = 0;
 
 	$("#mario").on("click", function clickMario() {
 		if (charChosen == false) {
@@ -112,11 +114,13 @@ $(document).ready(function() {
 				$("#counterText").text(defenderSelect + " counter attacks for " + counterAttack + " damage.");
 			}
 			if (heroChosen == "Mario") {
-				hpMario = hpMario - counterAttack;
-				$("#marioHP").text(hpMario);
-				heroHP = heroHP - counterAttack;
-				if (heroHP <= 0) {
-					$(".your").text("Game Over!");
+				if (defenderHP > attack) {
+					hpMario = hpMario - counterAttack;
+					$("#marioHP").text(hpMario);
+					heroHP = heroHP - counterAttack;
+					if (heroHP <= 0) {
+						$(".your").text("Game Over!");
+					}
 				}
 			}
 			if (defenderSelect == "Mario") {
@@ -124,12 +128,14 @@ $(document).ready(function() {
 				$("#marioHP").text(hpMario);
 				defenderHP = defenderHP - attack;
 			}
-			if (heroChosen == "Luigi") {
-				hpLuigi = hpLuigi - counterAttack;
-				$("#luigiHP").text(hpLuigi);
-				heroHP = heroHP - counterAttack;
-				if (heroHP <= 0) {
-					$(".your").text("Game Over!");
+			if (heroChosen == "Luigi")
+				if (defenderHP > attack) {
+					hpLuigi = hpLuigi - counterAttack;
+					$("#luigiHP").text(hpLuigi);
+					heroHP = heroHP - counterAttack;
+					if (heroHP <= 0) {
+						$(".your").text("Game Over!");
+					}
 				}
 			}
 			if (defenderSelect == "Luigi") {
@@ -138,11 +144,13 @@ $(document).ready(function() {
 				defenderHP = defenderHP - attack;
 			}
 			if (heroChosen == "Toad") {
-				hpToad = hpToad - counterAttack;
-				$("#toadHP").text(hpToad);
-				heroHP = heroHP - counterAttack;
-				if (heroHP <= 0) {
-					$(".your").text("Game Over!");
+				if (defenderHP > attack) {
+					hpToad = hpToad - counterAttack;
+					$("#toadHP").text(hpToad);
+					heroHP = heroHP - counterAttack;
+					if (heroHP <= 0) {
+						$(".your").text("Game Over!");
+					}
 				}
 			}
 			if (defenderSelect == "Toad") {
@@ -151,11 +159,13 @@ $(document).ready(function() {
 				defenderHP = defenderHP - attack;
 			}
 			if (heroChosen == "Bowser") {
-				hpBowser = hpBowser - counterAttack;
-				$("#bowserHP").text(hpBowser);
-				heroHP = heroHP - counterAttack;
-				if (heroHP <= 0) {
-					$(".your").text("Game Over!");
+				if (defenderHP > attack) {
+					hpBowser = hpBowser - counterAttack;
+					$("#bowserHP").text(hpBowser);
+					heroHP = heroHP - counterAttack;
+					if (heroHP <= 0) {
+						$(".your").text("Game Over!");
+					}
 				}
 			}
 			if (defenderSelect == "Bowser") {
@@ -163,7 +173,23 @@ $(document).ready(function() {
 				$("#bowserHP").text(hpBowser);
 				defenderHP = defenderHP - attack;
 			}
+		if (defenderHP <= 0) {
+			$("#defenderSelect").empty();
+			$("#counterText").text("You've defeated " + defenderSelect + ".");
+			defenderChosen = false;
+			defeatCount++;
+		}
+		if (heroChosen == "Mario") {
+			attack += 10;
+		} else if (heroChosen == "Luigi") {
+			attack += 12;
+		} else if (heroChosen == "Toad") {
+			attack += 13;
+		} else if (heroChosen == "Bowser") {
+			attack += 8;
+		}
+		if (defeatCount == 3) {
+			$("#counterText").text("You win!");
 		}
 	})
-
 })
