@@ -182,16 +182,7 @@ $(document).ready(function() {
 				$("#counterText").text("You've defeated " + defenderSelect + ".");
 				defenderChosen = false;
 				defeatCount++;
-			}	
-			// if (heroChosen == "Mario") {
-			// 	attack += 10;
-			// } else if (heroChosen == "Luigi") {
-			// 	attack += 12;
-			// } else if (heroChosen == "Toad") {
-			// 	attack += 13;
-			// } else if (heroChosen == "Bowser") {
-			// 	attack += 8;
-			// }
+			}
 			if (defeatCount > 2) {
 				$("#counterText").text("You win!");
 			}
